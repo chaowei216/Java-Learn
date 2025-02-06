@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -15,5 +17,18 @@ public class Main {
         // compile error
 //        int[] newArray;
 //        newArray = {1, 2, 3};
+
+        System.out.println(Arrays.toString(firstThree));
+
+        Object objVariable = firstThree;
+
+        if (objVariable instanceof int[]) {
+            System.out.println("Object variable is really an int array");
+        }
+
+        // binary search
+        if (Arrays.binarySearch(firstThree, 3) > 0) {
+            System.out.println("Array is really an int array");
+        }
     }
 }
