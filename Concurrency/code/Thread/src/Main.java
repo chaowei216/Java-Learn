@@ -1,4 +1,8 @@
+import java.util.Comparator;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 class SharedResource {
     synchronized void access() {
@@ -90,31 +94,61 @@ public class Main {
 //        t7.start();
 //        t8.start();
 
-        // executorService
-        try (ExecutorService executorService = Executors.newFixedThreadPool(3)) {
+//        // executorService
+//        try (ExecutorService executorService = Executors.newFixedThreadPool(3)) {
+//
+//            // task
+//            Callable<Integer> task = () -> {
+//                Thread.sleep(2000);
+//                return 10000;
+//            };
+//
+//            // task
+//            Runnable task1 = () -> {
+//                System.out.println("Hello");
+//            };
+//
+//            // submit task
+//            Future<Integer> result = executorService.submit(task);
+//
+//            var result2 = executorService.submit(task1);
+//
+//            // get data
+//            System.out.println(result.get());
+//
+//            executorService.shutdown();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
-            // task
-            Callable<Integer> task = () -> {
-                Thread.sleep(2000);
-                return 10000;
-            };
-
-            // task
-            Runnable task1 = () -> {
-                System.out.println("Hello");
-            };
-
-            // submit task
-            Future<Integer> result = executorService.submit(task);
-
-            var result2 = executorService.submit(task1);
-
-            // get data
-            System.out.println(result.get());
-
-            executorService.shutdown();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+//        // parallel
+//        // normal stream
+//        var nums = LongStream.range(1, 1_000_000).boxed().toList();
+//
+//        System.out.println(Runtime.getRuntime().availableProcessors());
+//
+//        var startTime = System.nanoTime();
+//        System.out.println("Normal Stream: " + LongStream.range(1, 30_000_000).max());
+//        System.out.println("Total time " + (System.nanoTime() - startTime) / 1_000_000 + "ms");
+//
+//        var startTime1 = System.nanoTime();
+//        System.out.println("Normal Stream: " + LongStream.range(1, 30_000_000).parallel().max());
+//        System.out.println("Total time " + (System.nanoTime() - startTime1) / 1_000_000.0 + "ms");
+//
+//        // ArrayBlockingQueue
+//        ArrayBlockingQueue<Integer> ints = new ArrayBlockingQueue<>(2);
+//
+//        ints.add(1);
+//        ints.add(2);
+//        System.out.println(ints.offer(3));
+//        try {
+//            ints.put(4);
+////            ints.take();
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+////        ints.put(4);
+//        System.out.println("Capacity: " + ints.remainingCapacity());
     }
 }
